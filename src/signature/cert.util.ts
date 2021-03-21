@@ -5,9 +5,9 @@ export const getDataFromP12Cert = (
   certPassword: string,
 ): forge.pkcs12.Pkcs12Pfx => {
   const forgeCert: forge.util.ByteStringBuffer = forge.util.createBuffer(
-    p12Buffer.toString('binary'),
+    p12Buffer.toString('binary'), 'utf8'
   )
-  const p12Asn1: forge.asn1.Asn1 = forge.asn1.fromDer(forgeCert)
+  const p12Asn1: forge.asn1.Asn1 = forge.asn1.fromDer(forgeCert, true)
   const p12data: forge.pkcs12.Pkcs12Pfx = forge.pkcs12.pkcs12FromAsn1(p12Asn1, false, certPassword)
 
   return p12data

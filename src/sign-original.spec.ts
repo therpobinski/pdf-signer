@@ -3,12 +3,12 @@ import { sign } from './sign'
 
 describe('some tests', () => {
   it('one signature without image', async () => {
-    const p12Buffer = fs.readFileSync(`./assets/pdf-signer.p12`)
+    const p12Buffer = fs.readFileSync(`./assets/keyStore.p12`)
     const pdfBuffer = fs.readFileSync(`./assets/example.pdf`)
 
-    const signedPdf = await sign(pdfBuffer, p12Buffer, 'pdfsigner', {
+    const signedPdf = await sign(pdfBuffer, p12Buffer, 'alma', {
       reason: '2',
-      email: 'test@email.com',
+      email: 'test2@email.com',
       location: 'Location, LO',
       signerName: 'Test User',
       annotationAppearanceOptions: {
